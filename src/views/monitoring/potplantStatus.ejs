@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EverGreen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="vivasrguez" />
+    <link rel="icon" href="./monitoring/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./monitoring/assets/css/style.css">
+</head>
+<body class="">
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				<div class="">
+					<div class="main-menu-header">
+						<% if(res.sex == 'M'){ %>
+							<img class="img-radius" src="./monitoring/assets/images/male.png" alt="User-Profile-Image">
+						<% } else { %>
+							<img class="img-radius" src="./monitoring/assets/images/female.png" alt="User-Profile-Image">
+						<% } %>
+						<div class="user-details"><br>
+							<div id="more-details"><a href=""><%= res.name %> <%= res.firstLastname %></a></div>
+						</div>
+					</div>
+				</div>
+                <br>
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mis Plantas</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Inicio</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/registerPotplant" class="nav-link "><span class="pcoded-micon"><i class="feather icon-plus"></i></span><span class="pcoded-mtext">Registrar maceta</span></a>
+					</li>
+					<% for(index = 0; index < res.plants.length; ++index){ 
+						if(res.plants[index].status == 1){ %>
+					<li class="nav-item">
+					    <a href="./potplantStatus?i=<%= res.plants[index].identificator %>" class="nav-link "><span class="pcoded-micon"><i class="feather icon-chevron-right"></i></span><span class="pcoded-mtext"><%= res.plants[index].name %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].denomination %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].species %></span></a>
+					</li>
+					<% } } %>
+				</ul>
+                <ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mi Cuenta</label>
+                    </li>
+                    <li class="nav-item"><a href="/profile" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Perfil de usuario</span></a></li>
+					<li class="nav-item"><a href="/logout" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out"></i></span><span class="pcoded-mtext">Cerrar sesión</span></a></li>
+				</ul>
+				</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse"><span></span></a>
+			<a href="/" class="b-brand">
+				<img src="./monitoring/assets/images/banner.png" alt="" class="logo">
+			</a>
+		</div>
+	</header>
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title title">
+                            <label><h1 class="m-b-10 title"><%= plant.name %></h1>
+							<span><%= plant.notes %></span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+
+
+
+
+
+
+
+
+			<br><br><br>
+					
+						<fieldset>
+							<legend>
+								<label><h3>Información sobre <%= plant.name %></h3></label>
+							</legend><br><br>
+						<table class="table" width="100%">
+
+
+							<tr>
+								<td colspan="2">
+										<label><h6>Tipo de planta</h6>
+										<p><strong><%= plant.denomination %></strong><br>
+										<%= plant.description %></p></label>
+								</td>
+							</tr>
+
+
+
+							<tr>
+								<td>
+										<label><h6>Folio de planta</h6>
+										<p>No. <%= plant.identificator %></p></label>
+								</td>
+								
+								<td>
+										<label><h6>Edad</h6>
+										<p><%= plant.age %> años<br>
+											<% if (plant.agePlant){ %>
+										<%= plant.agePlant %> años en promedio de esperanza de vida.
+										<% } %></p></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+										<label><h6>¿Es una planta exótica?</h6>
+										<p><%= plant.exotic==1?"Sí,":"No, no" %> se trata de una especie exótica</p></label>
+								</td>
+								
+								<td>
+										<label><h6>Región de origen</h6>
+										<p>+<%= plant.country %></p></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label><h6>Taxonomía</h6><p>
+										<strong>Reino:</strong> <%= plant.kingdom %>.<br><strong>Filo:</strong> <%= plant.phylum %>.<br><strong>Clase:</strong> <%= plant.class %>.<br><strong>Orden:</strong> <%= plant.orders %>.<br><strong>Familia:</strong> <%= plant.family %>.<br><strong>Género:</strong> <%= plant.genus %>.<br><strong>Especie:</strong> <%= plant.species %>.
+										</p></label>
+								</td>
+								
+								<td>
+									<label><h6>Color predominante</h6><br>
+									<p><strong>HEX:</strong> #<%= plant.color %></p>
+									<input type="color" value="#<%= plant.color %>" style="width: 35%;" disabled></label>
+							</td>
+							</tr>
+							<tr>
+								<td>
+										<label><h6>Registro a EverGreen</h6>
+										<p><%= plant.register.toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric", second:"numeric", timeZoneName:"short"}) %></p></label>
+								</td>
+								
+								<td>
+										<label><h6>Última actualización</h6>
+										<p><%= plant.updateRow.toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric", second:"numeric", timeZoneName:"short"}) %></p></label>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="rigth"><br>
+									<button type="button" class="btn  btn-primary" onclick="location.href='http://<%= plant.ipv4 %>/'">Activar sistema de hidratación</button>
+								</td>
+							</tr>
+							</table>
+						</fieldset>
+						<br><br><br>
+						<fieldset>
+							<legend>
+								<label><h6>Monitoreo de temperatura ambiental</h6></label>
+							</legend><br>
+							<iframe src="<%= graphic[0].graph %>" width="39%" height="150" frameborder="0"></iframe>
+							<iframe src="<%= graphic[1].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			</fieldset>
+			<br><br>
+
+			<fieldset>
+				<legend>
+					<label><h6>Monitoreo de humedad ambiental</h6></label>
+				</legend><br>
+				<iframe src="<%= graphic[2].graph %>" width="39%" height="150" frameborder="0"></iframe>
+				<iframe src="<%= graphic[3].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			</fieldset>
+			<br><br>
+			
+			<fieldset>
+				<legend>
+					<label><h6>Monitoreo de humedad en tierra</h6></label>
+				</legend><br>
+				<iframe src="<%= graphic[4].graph %>" width="39%" height="150" frameborder="0"></iframe>
+				<iframe src="<%= graphic[5].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			</fieldset>
+			<br><br>
+		
+			<fieldset>
+				<legend>
+					<label><h6>Monitoreo de luminosidad</h6></label>
+				</legend><br>
+				<iframe src="<%= graphic[6].graph %>" width="39%" height="150" frameborder="0"></iframe>
+				<iframe src="<%= graphic[7].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			</fieldset>
+			<br><br><br><br>
+						<fieldset>
+							<legend>
+								<label><h3>Información sobre la maceta EverGreen</h3></label>
+							</legend><br><br>
+							<table class="table" width="100%">
+								<tr>
+									<td colspan="2">
+											<label><h6>Tipo de maceta</h6>
+											<p><strong><%= plant.denominationPot %> versión <%= plant.version %></strong><br>
+											<%= plant.descriptionPot %><br>
+											<%= plant.properties %></p></label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+												<label><h6>Material</h6>
+												<p><%= plant.material %></p></label>
+									</td>
+									
+									<td>
+											<label><h6>Textura</h6>
+											<p><%= plant.texture %></p></label>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<label><h6>Adquisición</h6><p>
+											<%= plant.registerAcquisition.toLocaleDateString('es-es', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric", second:"numeric", timeZoneName:"short"}) %>
+											</p></label>
+									</td>
+									
+									<td>
+										<label><h6>Color</h6><br>
+											<p><strong>HEX:</strong> #<%= plant.colorPot %></p>
+											<input type="color" value="#<%= plant.colorPot %>" style="width: 35%;" disabled></label>
+								</td>
+								</tr>
+
+
+
+								<tr>
+									<td>
+											<label><h6>Código de maceta</h6>
+											<p><%= plant.codePot %></p></label>
+									</td>
+									
+									<td>
+											<label><h6>Código de unidad</h6>
+											<p><%= plant.code %></p></label>
+									</td>
+								</tr>
+						</table>
+					</fieldset>
+
+
+
+
+
+
+					<br><br><br>
+
+					<fieldset>
+						<legend>
+							<label><h6>Historial de temperatura ambiental</h6></label>
+						</legend><br>
+						<iframe src="<%= graphic[8].graph %>" width="100%" height="150" frameborder="0"></iframe><br>
+			<iframe src="<%= graphic[9].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			<iframe src="<%= graphic[10].graph %>" width="39%" height="300" frameborder="0"></iframe>
+		</fieldset>
+
+			<br><br>
+
+			<fieldset>
+				<legend>
+					<label><h6>Historial de humedad ambiental</h6></label>
+				</legend><br>
+				<iframe src="<%= graphic[11].graph %>" width="100%" height="150" frameborder="0"></iframe><br>
+			<iframe src="<%= graphic[12].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			<iframe src="<%= graphic[13].graph %>" width="39%" height="300" frameborder="0"></iframe>
+			</fieldset>
+			
+			<br><br>
+			
+			<fieldset>
+				<legend>
+					<label><h6>Historial de humedad en tierra</h6></label>
+				</legend><br>
+				<iframe src="<%= graphic[14].graph %>" width="100%" height="150" frameborder="0"></iframe><br>
+				<iframe src="<%= graphic[15].graph %>" width="60%" height="300" frameborder="0"></iframe>
+				<iframe src="<%= graphic[16].graph %>" width="39%" height="300" frameborder="0"></iframe>
+			</fieldset>
+		
+			<br><br>
+
+					<fieldset>
+						<legend>
+							<label><h6>Historial de luminosidad</h6></label>
+						</legend><br>
+						<iframe src="<%= graphic[17].graph %>" width="100%" height="150" frameborder="0"></iframe><br>
+			<iframe src="<%= graphic[18].graph %>" width="60%" height="300" frameborder="0"></iframe>
+			<iframe src="<%= graphic[19].graph %>" width="39%" height="300" frameborder="0"></iframe>
+			</fieldset><br><br><br>
+		</div>
+    </div>
+</div>
+    <script src="./monitoring/assets/js/vendor-all.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="./monitoring/assets/js/ripple.js"></script>
+    <script src="./monitoring/assets/js/pcoded.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="./monitoring/assets/js/pages/dashboard-main.js"></script>
+</body>
+</html>

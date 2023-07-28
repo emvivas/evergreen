@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EverGreen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="vivasrguez" />
+    <link rel="icon" href="./monitoring/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./monitoring/assets/css/style.css">
+</head>
+<body class="">
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				<div class="">
+					<div class="main-menu-header">
+						<% if(res.sex == 'M'){ %>
+							<img class="img-radius" src="./monitoring/assets/images/male.png" alt="User-Profile-Image">
+						<% } else { %>
+							<img class="img-radius" src="./monitoring/assets/images/female.png" alt="User-Profile-Image">
+						<% } %>
+						<div class="user-details"><br>
+							<div id="more-details"><a href=""><%= res.name %> <%= res.firstLastname %></a></div>
+						</div>
+					</div>
+				</div>
+                <br>
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mis Plantas</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Inicio</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/registerPotplant" class="nav-link "><span class="pcoded-micon"><i class="feather icon-plus"></i></span><span class="pcoded-mtext">Registrar maceta</span></a>
+					</li>
+					<% for(index = 0; index < res.plants.length; ++index){ 
+						if(res.plants[index].status == 1){ %>
+					<li class="nav-item">
+					    <a href="./potplantStatus?i=<%= res.plants[index].identificator %>" class="nav-link "><span class="pcoded-micon"><i class="feather icon-chevron-right"></i></span><span class="pcoded-mtext"><%= res.plants[index].name %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].denomination %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].species %></span></a>
+					</li>
+					<% } } %>
+				</ul>
+                <ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mi Cuenta</label>
+                    </li>
+                    <li class="nav-item"><a href="/profile" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Perfil de usuario</span></a></li>
+					<li class="nav-item"><a href="/logout" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out"></i></span><span class="pcoded-mtext">Cerrar sesión</span></a></li>
+				</ul>
+				</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse"><span></span></a>
+			<a href="/" class="b-brand">
+				<img src="./monitoring/assets/images/banner.png" alt="" class="logo">
+			</a>
+		</div>
+	</header>
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title title">
+							<label>
+                            <h1 class="m-b-10 title">Mi perfil</h1>
+							<span>Observe los datos personales registrados en su cuenta de usuario</span>
+							</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="zerogrid">
+			<div class="comments-are">
+				<div id="comment">
+					<br><br>
+						<fieldset>
+							<legend>
+								<label><h3>Información personal</h3></label>
+							</legend><br><br>
+						<table class="table" width="100%">
+							<tr>
+								<td width="48%">
+										<label><h6>Usuario</h6>
+										<p><%= res.username %></p></label>
+								</td>
+								<td>
+								</td>
+								<td width="48%">
+										<label><h6>Correo electrónico</h6>
+										<p><%= res.email %></p></label>
+								</td>
+							</tr>
+							<tr>
+								<td width="48%">
+										<label><h6>Nombre</h6>
+										<p><%= res.name %></p></label>
+								</td>
+								<td>
+								</td>
+								<td width="48%">
+										<label><h6>Primer apellido</h6>
+										<p><%= res.firstLastname %></p></label>
+								</td>
+							</tr>
+							<tr>
+								<td width="48%">
+										<label><h6>Segundo apellido</h6>
+										<p><%= res.secondLastname %></p></label>
+								</td>
+								<td>
+								</td>
+								<td width="48%">
+									<label><h6>Sexo</h6><p>
+										<% if(res.sex == 'M') { %>
+										Masculino
+										<% } else { %>
+										Femenino
+										<% } %>
+										</p></label>
+								</td>
+							</tr>
+							<tr>
+								<td width="48%">
+										<label><h6>Fecha de nacimiento</h6>
+										<p><%= res.birthday %></p></label>
+								</td>
+								<td>
+								</td>
+								<td width="48%">
+										<label><h6>Número telefónico</h6>
+										<p><%= res.telephoneNumber %></p></label>
+								</td>
+							</tr>
+							</table>
+						</fieldset>
+						<br><br>
+						<fieldset>
+							<legend>
+								<label><h3>Información domiciliar</h3></label>
+							</legend><br><br>
+							<table class="table" width="100%">
+								<tr>
+									<td width="48%">
+												<label><h6>País</h6>
+												<p>+<%= res.country %> (código de área)</p></label>
+									</td>
+									<td>
+									</td>
+									<td width="48%">
+											<label><h6>Entidad federativa</h6>
+											<p><%= res.state %></p></label>
+									</td>
+								</tr>
+								<tr>
+									<td width="48%">
+											<label><h6>Ciudad</h6>
+											<p><%= res.city %></p></label>
+									</td>
+									<td>
+									</td>
+									<td width="48%">
+											<label><h6>Código postal</h6>
+											<p><%= res.zip %></p></label>
+									</td>
+								</tr>
+							<tr>
+								<td colspan="3">
+									<label><h6>Más información sobre su domicilio</h6>
+									<p><%= res.location %></p></label>
+								</td>
+							</tr>
+						</table>
+					</fieldset><br><br>
+						<center><button type="button" class="btn  btn-primary" onclick="location.href='/updateProfile'">Modificar mi cuenta de usuario</button></center>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+    <script src="./monitoring/assets/js/vendor-all.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="./monitoring/assets/js/ripple.js"></script>
+    <script src="./monitoring/assets/js/pcoded.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="./monitoring/assets/js/pages/dashboard-main.js"></script>
+</body>
+</html>

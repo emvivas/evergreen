@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>EverGreen</title>
+	<meta name="description" content="EverGreen">
+	<meta name="author" content="vivasrguez">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  	<link href="./assets/css/zerogrid.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/css/style.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/css/menu.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/css/lightbox.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/css/jquery.mb.ytplayer.min.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/css/animate.css" rel="stylesheet" media="all" type="text/css">
+	<link href="./assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./assets/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body id="page-top" class="sub-page">
+<div class="wrap-body">
+	<header>
+		<div class="wrap-header" >
+			<div class="main-header">
+				<div class="bg-overlay">
+					<div class="hero-content-wrapper">
+					  <div class="hero-content">
+						<label><h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">Iniciar sesión</h1></label><br>
+						<label><h4 class="h-alt hero-subheading wow fadeIn" data-wow-duration="2s" data-wow-delay=".7s">Bienvenido a su entorno de monitoreo</h4></label>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div id="cssmenu" >
+				<ul>
+				   <li class="active"><a href="./"><span>Inicio</span></a></li>
+				   <li><a href="#"><span>Propósito</span></a></li>
+				   <li><a href="#"><span>Información</span></a></li>
+				   <li class="last"><a href="#"><span>Contacto</span></a></li>
+				   <li class="has-sub"><a href="#"><span>Proyecto</span></a>
+					  <ul>
+						 <li class="has-sub"><a href="#"><span>Administración</span></a>
+							<ul>
+							   <li class="last"><a href="#"><span>Carta del proyecto</span></a></li>
+							   <li><a href="#"><span>Estructura del trabajo</span></a></li>
+							   <li class="last"><a href="#"><span>Cronograma de actividades</span></a>
+							   <li><a href="#"><span>Presentación de diapositivas</span></a></li>
+							   <li><a href="#"><span>Lecciones aprendidas</span></a></li></li>
+							</ul>
+						 </li>
+						 <li class="has-sub"><a href="#"><span>Diseño</span></a>
+							<ul>
+							   <li><a href="#"><span>Logotipo</span></a></li>
+							   <li class="last"><a href="#"><span>Manual de identidad</span></a></li>
+							</ul>
+						 </li>
+						 <li class="has-sub"><a href="#"><span>Planta</span></a>
+							<ul>
+							   <li><a href="#"><span>Venus atrapamoscas</span></a></li>
+							   <li class="last"><a href="#"><span>Ficha técnica</span></a></li>
+							   <li class="last"><a href="#"><span>Código QR</span></a></li>
+							</ul>
+						 </li>
+						 <li class="has-sub"><a href="#"><span>Hardware</span></a>
+							<ul>
+							   <li><a href="#"><span>Maceta</span></a></li>
+							   <li class="last"><a href="#"><span>Placa de circuitos</span></a></li>
+							   <li class="last"><a href="#"><span>Pantalla de estado</span></a></li>
+							</ul>
+						 </li>
+						 <li class="has-sub"><a href="#"><span>Software</span></a>
+							<ul>
+							   <li><a href="#"><span>FrontEnd</span></a></li>
+							   <li class="last"><a href="#"><span>BackEnd</span></a></li>
+							   <li class="last"><a href="#"><span>Base de datos</span></a></li>
+							</ul>
+						 </li>
+					  </ul>
+				   </li>
+				</ul>
+			</div>
+			
+		</div>
+	</header>
+	<section id="page-content">
+		<div class="wrap-container zerogrid">
+			<div class="crumbs">
+				<ul>
+					<li><a href="./">Inicio</a></li>
+					<li><a href="./access">Iniciar sesión</a></li>
+				</ul>
+			</div>
+			<div class="zerogrid">
+				<div class="comments-are">
+					<div id="comment">
+						<fieldset>
+						<legend>
+							<label><h3>Inicio de sesión</h3></label>
+							<label><span>Introduzca sus credeciales para acceder al sistema</span></label>
+						</legend>
+						<br><br><br>
+						<table width="100%">
+							<tr>
+								<td width="35%">
+						<img src="./assets/images/signin.svg" class="img-responsive" alt="" width="100%">
+						</td>
+						<td width="65%">
+						<p align="right"><label><span>¿No tiene una cuenta EverGreen?<br>Regístrese <a href="./start">aquí</a>.</span></label></p><br><br>
+						</td>
+					</tr>
+					</table><br><br><br>
+						<form name="signinForm" id="signinForm" method="post" action="/signin">
+							<table width="100%">
+								<tr>
+									<td width="60%">
+										<label>
+											<span>Usuario</span>
+											<input type="text"  name="username" id="username" maxlength="30" required>
+											</label>
+									</td>
+									<td width="40%" rowspan="3">
+										<br><br>
+										<p align="right"><label><span>¿Ha olvidado la contraseña?<br>Recupérala <a href="#">aquí</a>.</span></label></p>
+									</td>
+								</tr>
+								<tr>
+									<td width="60%">
+										<label>
+											<span>Contraseña</span>
+											<input type="password"  name="password" id="password" maxlength="100" required>
+											</label>
+									</td>
+								</tr>
+								<tr>
+									<td width="60%">
+										<br><br>
+										<center><input class="button button-skin " type="submit" id="signin" name="signin" value="Iniciar sesión"></center>
+									</td>
+								</tr>
+							</table>
+						</form>
+						</fieldset>
+						<br><br><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="wrap-footer">
+			<div class="zerogrid">
+				<div class="row">
+					<div class="sm-2-4 col-footer-1">
+						<div class="wrap-col">
+							<label><h3 class="widget-title">Acerca de EverGreen</h3></label>
+							<label><p>EverGreen es un proyecto universitario sobre IoT, Internet de las Cosas, desarrollado por estudiantes de la Ingeniería de Tecnologías Computacionales del Tecnológico de Monterrey campus Cuernavaca.</p></label>
+							<label><p>El proyecto está programado para presentarse oficialmente en el evento de ExpoIngenierías 2022 del Instituto de Estudios Superiores de Monterrey, Tecnológico de Monterrey.</p></label>
+							<ul class="quicklinks">
+								<li><a href="#">Política de privacidad</a></li>
+								<li><a href="#">Términos de uso</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="sm-1-4 col-footer-2">
+						<div class="wrap-col">
+							<label><h3 class="widget-title">Contacto</h3></label>
+							<label><p>Número telefónico</p></label>
+							<a href="tel:+525539910672"><strong style="font-size: 25px;">+52 55 39910672</strong></a>
+							<label><p>Dirección:</p></label>
+							<label><strong>México 95D km 104, Real del Puente, 62790, Xochitepec, Morelos, México</strong></label>
+							<label><p>Correo electrónico:</p></label>
+							<a href="mailto:a01424732@tec.mx""><strong>a01424732@tec.mx</strong></a>
+						</div>
+					</div>
+					<div class="sm-1-4 col-footer-3">
+						<div class="wrap-col">
+							<label><h3 class="widget-title">Redes sociales</h3></label>
+							<ul class="social-buttons">
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom-footer">
+			<div class="copyright">
+				<div class="zerogrid">
+					<div class="row">
+						<div class="sm-1-2">
+							<label>Copyright © 2022, EverGreen</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="./assets/js/jquery-3.1.1.min.js"></script>
+	<script src="./assets/js/menu.js"></script>
+	<script src="./assets/js/jquery.localScroll.min.js"></script>
+	<script src="./assets/js/jquery.scrollTo.min.js"></script>
+	<script src="./assets/js/SmoothScroll.js"></script>
+	<script src="./assets/js/wow.min.js"></script>
+	<script src="./assets/js/google-map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7V-mAjEzzmP6PCQda8To0ZW_o3UOCVCE&callback=initMap" async defer></script>
+	<script src="./assets/js/main.js"></script>
+</div>
+</body></html>

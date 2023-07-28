@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EverGreen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="vivasrguez" />
+    <link rel="icon" href="./monitoring/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./monitoring/assets/css/style.css">
+</head>
+<body class="">
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				<div class="">
+					<div class="main-menu-header">
+						<% if(res.sex == 'M'){ %>
+							<img class="img-radius" src="./monitoring/assets/images/male.png" alt="User-Profile-Image">
+						<% } else { %>
+							<img class="img-radius" src="./monitoring/assets/images/female.png" alt="User-Profile-Image">
+						<% } %>
+						<div class="user-details"><br>
+							<div id="more-details"><a href=""><%= res.name %> <%= res.firstLastname %></a></div>
+						</div>
+					</div>
+				</div>
+                <br>
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mis Plantas</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Inicio</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/registerPotplant" class="nav-link "><span class="pcoded-micon"><i class="feather icon-plus"></i></span><span class="pcoded-mtext">Registrar maceta</span></a>
+					</li>
+					<% for(index = 0; index < res.plants.length; ++index){ 
+						if(res.plants[index].status == 1){ %>
+					<li class="nav-item">
+					    <a href="./potplantStatus?i=<%= res.plants[index].identificator %>" class="nav-link "><span class="pcoded-micon"><i class="feather icon-chevron-right"></i></span><span class="pcoded-mtext"><%= res.plants[index].name %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].denomination %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].species %></span></a>
+					</li>
+					<% } } %>
+				</ul>
+                <ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mi Cuenta</label>
+                    </li>
+                    <li class="nav-item"><a href="/profile" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Perfil de usuario</span></a></li>
+					<li class="nav-item"><a href="/logout" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out"></i></span><span class="pcoded-mtext">Cerrar sesión</span></a></li>
+				</ul>
+				</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse"><span></span></a>
+			<a href="/" class="b-brand">
+				<img src="./monitoring/assets/images/banner.png" alt="" class="logo">
+			</a>
+		</div>
+	</header>
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title title">
+                            <label><h1 class="m-b-10 title">Registrar maceta</h1>
+							<span>Inicie el cuidado y el monitoreo de la integridad de alguna de sus plantas</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+			<br><br><br>
+			<form name="acquisitionForm" id="acquisitionForm" method="post" action="/registerPot">
+				<fieldset>
+					<legend>
+						<label><h4>Registrar una maceta EverGreen</h4></label>
+					</legend><br><br>
+					<table width="100%">
+						<tr>
+							<td width="60%">
+								<table width="100%">
+									<tr>
+										<td colspan="2">
+											<p>
+												<label><span>Cada maceta EverGreen tiene el objetivo de monitorear la integridad de cada una de las plantas que resguarda. Nuestro propósito principal es ser de ayuda durante el proceso.</span></label>
+											</p>
+											<p><label><span>¿Preparado para comenzar una nueva historia con alguna planta?</span></label></p><br><br>
+											<table width="100%" class="table">
+												<tr>
+													<td>
+											<label>
+												<h6>Código de la maceta</h6><br>
+												<input type="text" name="code" id="code" maxlength="30" required>
+											</label>
+											</td>
+											</tr>
+											<tr>
+											<td>
+											<label>
+												<h6>Nombre de la planta</h6><br>
+												<input type="text" name="name" id="name" maxlength="30">
+											</label>
+											</td>
+											</tr>
+											<tr>
+												<td>
+											<label>
+												<h6>Edad en años</h6><br>
+												<input type="number" name="age" id="age" step="0.1" required>
+											</label>
+											</td>
+											</tr>
+											<tr>
+											<td>
+											<label>
+												<h6>Notas</h6><br>
+												<input type="text" name="notes" id="notes" maxlength="150">
+											</label>
+											</td>
+											</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td><br>
+											<input class="button button-skin " type="submit" id="registerPlot" name="registerPlot" value="Registrar">
+											<input class="button button-skin " type="reset" id="resetRegisterPlot" name="resetRegisterPlot" value="Cancelar">
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="5%"></td>
+							<td width="35%">
+								<img src="./monitoring/assets/images/registerPotPlant.svg" alt="Register EverGreen potplant" width="100%">
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+			<br><br><br>
+		</div>
+    </div>
+</div>
+    <script src="./monitoring/assets/js/vendor-all.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="./monitoring/assets/js/ripple.js"></script>
+    <script src="./monitoring/assets/js/pcoded.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="./monitoring/assets/js/pages/dashboard-main.js"></script>
+</body>
+</html>

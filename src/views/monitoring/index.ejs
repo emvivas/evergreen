@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EverGreen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="vivasrguez" />
+    <link rel="icon" href="./monitoring/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./monitoring/assets/css/style.css">
+	<link href="./assets/css/zerogrid.css" rel="stylesheet" media="all" type="text/css">
+</head>
+<body class="">
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div " >
+				<div class="">
+					<div class="main-menu-header">
+						<% if(res.sex == 'M'){ %>
+							<img class="img-radius" src="./monitoring/assets/images/male.png" alt="User-Profile-Image">
+						<% } else { %>
+							<img class="img-radius" src="./monitoring/assets/images/female.png" alt="User-Profile-Image">
+						<% } %>
+						<div class="user-details"><br>
+							<div id="more-details"><a href=""><%= res.name %> <%= res.firstLastname %></a></div>
+						</div>
+					</div>
+				</div>
+                <br>
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mis Plantas</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Inicio</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="/registerPotplant" class="nav-link "><span class="pcoded-micon"><i class="feather icon-plus"></i></span><span class="pcoded-mtext">Registrar maceta</span></a>
+					</li>
+					<% for(index = 0; index < res.plants.length; ++index){ 
+						if(res.plants[index].status == 1){ %>
+					<li class="nav-item">
+					    <a href="./potplantStatus?i=<%= res.plants[index].identificator %>" class="nav-link "><span class="pcoded-micon"><i class="feather icon-chevron-right"></i></span><span class="pcoded-mtext"><%= res.plants[index].name %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].denomination %></span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pcoded-mtext" style="font-size:x-small;"><%= res.plants[index].species %></span></a>
+					</li>
+					<% } } %>
+				</ul>
+                <ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Mi Cuenta</label>
+                    </li>
+                    <li class="nav-item"><a href="/profile" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Perfil de usuario</span></a></li>
+					<li class="nav-item"><a href="/logout" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out"></i></span><span class="pcoded-mtext">Cerrar sesión</span></a></li>
+				</ul>
+				</div>
+		</div>
+	</nav>
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse"><span></span></a>
+			<a href="/" class="b-brand">
+				<img src="./monitoring/assets/images/banner.png" alt="" class="logo">
+			</a>
+		</div>
+	</header>
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title title">
+                            <label><h1 class="m-b-10 title">Inicio</h1>
+							<span>Eche un vistazo a cada una de sus plantas</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+			<br><br><br>
+			<% if(res.plants.length>0){ %>
+			<fieldset>
+				<legend>
+					<label><h4>¡Bienvenido a EverGreen!</h4></label>
+				</legend><br><br>
+				<table width="100%">
+					<tr>
+						<td width="75%">
+							<label><p>EverGreen es un proyecto universitario sobre IoT, Internet de las Cosas, desarrollado por estudiantes de la Ingeniería de Tecnologías Computacionales del Tecnológico de Monterrey campus Cuernavaca. El proyecto está programado para presentarse oficialmente en el evento de ExpoIngenierías 2022 de dicho campus.</p></label>
+							<label><p>La estadística y la analítica de datos son dos ciencias fundamentales para comprender el comportamiento de todo aquello que nos rodea. Ofrecemos las mejores herramientas para cuidar y monitorear a uno de los seres vivos más especiales del hogar, las plantas.</p></label>
+							<label><p>De parte del equipo EverGreen, qué gusto tenerte aquí de nuevo.</p></label>
+						</td>
+						<td width="5%"></td>
+						<td width="20%">
+							<img src="./monitoring/assets/images/statistics.svg" alt="Bienvenido a EverGreen" width="100%">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<br><br><br>
+			<fieldset>
+				<legend>
+					<label><h4><%= [`Hola de nuevo, ${res.name}`, `Gusto en verte de nuevo, ${res.name}`, `Saludos, ${res.name}`, `Tus plantas te han extrañado, ${res.name}`, `Te hemos echado de menos, ${res.name}`, "A monitorear se ha dicho", "Cosas increíbles han sucedido en tu ausencia", "Más que un sistema de plantas y gráficas", "Fomentando un mundo tecnológicamente verde", "Más que un sistema de monitoreo"][Math.floor(Math.random()*10)] %></h4></label>
+				</legend><br><br>
+				<% for(index = 0; index < res.plants.length; ++index){ %>
+				<div class="sm-1-3">
+					<div class="wrap-col">
+						<div class="box-entry">
+							<div class="box-entry-inner">
+								<img src="./monitoring/assets/images/plant<%=res.plants[index].status%>.jpg" class="img-responsive"/>
+								<div class="entry-details">
+									<div class="entry-des">
+										<h3><a href="./potplantStatus?i=<%= res.plants[index].identificator %>"><%= res.plants[index].name %></a></h3>
+										<label><p><strong>Maceta:</strong> <%= res.plants[index].denomination %></p></label>
+										<label><p><strong>Especie:</strong> <%=  res.plants[index].species.length>0?res.plants[index].species:"Sin especificar" %></p></label>
+										<label><p><i>Monitoreo <%=  res.plants[index].status==1?'':"no " %>disponible</i></p></label>
+										<a class="button button-skin" href="./potplantStatus?i=<%= res.plants[index].identificator %>">Mostrar estado</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% } %>
+			</fieldset>
+			<% } else { %>
+				<center>
+					<label><h6>No hay ninguna planta por aquí.<br>¡Comencemos una nueva historia!</h6></label><br><br>
+					<img src="./monitoring/assets/images/void.svg" alt="Bienvenido a EverGreen" width="20%"><br><br><br><br>
+					<a href="./registerPotplant">Registrar una maceta EverGreen</a>
+				</center>
+			<% } %>
+		</div>
+    </div>
+</div>
+    <script src="./monitoring/assets/js/vendor-all.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="./monitoring/assets/js/ripple.js"></script>
+    <script src="./monitoring/assets/js/pcoded.min.js"></script>
+    <script src="./monitoring/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="./monitoring/assets/js/pages/dashboard-main.js"></script>
+</body>
+</html>
